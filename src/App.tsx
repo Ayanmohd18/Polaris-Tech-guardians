@@ -4,6 +4,8 @@ import { CollaborativeCanvas } from './components/canvas/CollaborativeCanvas';
 import { DeploymentPanel } from './components/deployment/DeploymentPanel';
 import MobileStudio from './components/MobileStudio';
 import { DatabaseConnector } from './components/database/DatabaseConnector';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { ThemeToggle } from './components/ThemeToggle';
 import './styles/globals.css';
 
 class ErrorBoundary extends React.Component<
@@ -222,57 +224,49 @@ const App: React.FC = () => {
             className={`nav-btn neon-button ${currentView === 'dashboard' ? 'active' : ''}`}
             onClick={() => setCurrentView('dashboard')}
           >
-            <span className="btn-icon">🏠</span>
             <span className="btn-text">Dashboard</span>
           </button>
           <button 
             className={`nav-btn neon-button ${currentView === 'voice' ? 'active' : ''}`}
             onClick={() => setCurrentView('voice')}
           >
-            <span className="btn-icon">🎤</span>
             <span className="btn-text">Voice AI</span>
           </button>
           <button 
             className={`nav-btn neon-button ${currentView === 'canvas' ? 'active' : ''}`}
             onClick={() => setCurrentView('canvas')}
           >
-            <span className="btn-icon">🎨</span>
             <span className="btn-text">Collaborate</span>
           </button>
           <button 
             className={`nav-btn neon-button ${currentView === 'deploy' ? 'active' : ''}`}
             onClick={() => setCurrentView('deploy')}
           >
-            <span className="btn-icon">🚀</span>
             <span className="btn-text">Deploy</span>
           </button>
           <button 
             className={`nav-btn neon-button ${currentView === 'database' ? 'active' : ''}`}
             onClick={() => setCurrentView('database')}
           >
-            <span className="btn-icon">💾</span>
             <span className="btn-text">Database</span>
           </button>
           <button 
             className={`nav-btn neon-button ${currentView === 'mobile' ? 'active' : ''}`}
             onClick={() => setCurrentView('mobile')}
           >
-            <span className="btn-icon">📱</span>
             <span className="btn-text">Mobile</span>
           </button>
         </nav>
 
         <div className="status-indicators">
+          <ThemeToggle />
           <div className={`status-card glass-card ${isVoiceActive ? 'active pulse' : ''}`}>
-            <span className="status-icon">🎤</span>
             <span className="status-text">{isVoiceActive ? 'Listening' : 'Ready'}</span>
           </div>
           <div className="status-card glass-card glow">
-            <span className="status-icon">🤖</span>
             <span className="status-text">AI Active</span>
           </div>
           <div className="status-card glass-card">
-            <span className="status-icon">⚡</span>
             <span className="status-text">Online</span>
           </div>
         </div>
@@ -341,10 +335,9 @@ const App: React.FC = () => {
 
         .nav-btn {
           display: flex;
-          flex-direction: column;
           align-items: center;
-          gap: 5px;
-          padding: 15px 20px;
+          justify-content: center;
+          padding: 12px 24px;
           background: transparent;
           border: 2px solid var(--neon-blue);
           border-radius: 12px;
@@ -360,11 +353,6 @@ const App: React.FC = () => {
           background: var(--neon-blue);
           color: white;
           box-shadow: 0 0 30px var(--neon-blue);
-        }
-
-        .btn-icon {
-          font-size: 1.5rem;
-          margin-bottom: 2px;
         }
 
         .btn-text {
@@ -394,10 +382,6 @@ const App: React.FC = () => {
         .status-card.active {
           border-color: var(--neon-green);
           color: var(--neon-green);
-        }
-
-        .status-icon {
-          font-size: 1.2rem;
         }
 
         .status-text {
@@ -489,45 +473,39 @@ const LegendaryDashboard: React.FC = () => {
         
         <div className="feature-grid">
           <div className="feature-card glass-card floating">
-            <div className="feature-icon glow">🎤</div>
             <h3>Voice-First Development</h3>
             <p>Revolutionary speech-to-code with AI understanding</p>
-            <div className="feature-status active">✨ Active</div>
+            <div className="feature-status active">Active</div>
           </div>
 
           <div className="feature-card glass-card floating">
-            <div className="feature-icon glow">🤝</div>
             <h3>Real-time Collaboration</h3>
             <p>Humans + AI working together seamlessly</p>
-            <div className="feature-status active">✨ Active</div>
+            <div className="feature-status active">Active</div>
           </div>
 
           <div className="feature-card glass-card floating">
-            <div className="feature-icon glow">🧠</div>
             <h3>Multi-AI Orchestration</h3>
             <p>Claude, GPT-4, Gemini working as one</p>
-            <div className="feature-status active">✨ Active</div>
+            <div className="feature-status active">Active</div>
           </div>
 
           <div className="feature-card glass-card floating">
-            <div className="feature-icon glow">🚀</div>
             <h3>Instant Deployment</h3>
             <p>One-click deployment to any platform</p>
-            <div className="feature-status active">✨ Active</div>
+            <div className="feature-status active">Active</div>
           </div>
 
           <div className="feature-card glass-card floating">
-            <div className="feature-icon glow">📱</div>
             <h3>Mobile App Studio</h3>
             <p>Generate complete mobile apps from prompts</p>
-            <div className="feature-status active">✨ Active</div>
+            <div className="feature-status active">Active</div>
           </div>
 
           <div className="feature-card glass-card floating">
-            <div className="feature-icon glow">💾</div>
             <h3>Universal Database</h3>
             <p>Connect to any database with AI assistance</p>
-            <div className="feature-status active">✨ Active</div>
+            <div className="feature-status active">Active</div>
           </div>
         </div>
       </div>
@@ -604,12 +582,6 @@ const LegendaryDashboard: React.FC = () => {
 
         .feature-card:hover::before {
           left: 100%;
-        }
-
-        .feature-icon {
-          font-size: 4rem;
-          margin-bottom: 20px;
-          display: block;
         }
 
         .feature-card h3 {
@@ -707,4 +679,10 @@ const LegendaryDashboard: React.FC = () => {
   );
 };
 
-export default App;
+const AppWithTheme: React.FC = () => (
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>
+);
+
+export default AppWithTheme;

@@ -1,4 +1,4 @@
-import { sanitizeObject, rateLimiter, generateSecureId } from '../utils/security';
+import { sanitizeObject, rateLimiter, generateSecureId } from '../../utils/security';
 
 class APIClient {
   private baseURL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
