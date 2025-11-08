@@ -24,12 +24,6 @@ NEXUS PRO is a revolutionary AI-powered co-creation platform that combines the b
 - **Gemini** for documentation and design
 - **Consensus decision-making** across AI models
 
-### 📝 Notion Integration
-- **Bidirectional sync** between Notion workspace and code
-- **Task-to-branch conversion** with automatic PR creation
-- **Auto-documentation** generation from code changes
-- **Project management** integration
-
 ### 🚀 Instant Deployment
 - **One-click deployment** to Vercel, Netlify, Railway
 - **Environment management** with secure variable storage
@@ -42,37 +36,17 @@ NEXUS PRO is a revolutionary AI-powered co-creation platform that combines the b
 - **Real-time query execution** with result visualization
 - **Connection pooling** and performance optimization
 
-### 🎨 Design Canvas
-- **Figma-like UI builder** with drag-drop tools
-- **Component library** with customizable elements
-- **Responsive design** preview across devices
-- **Export to code** functionality
-
-### 📊 Advanced Analytics
-- **Performance monitoring** with real-time metrics
-- **Security scanning** with vulnerability detection
-- **Code quality analysis** with AI insights
-- **Usage analytics** and optimization suggestions
-
-### 🛍️ Plugin Marketplace
-- **Extensible plugin system** with hot-loading
-- **Community marketplace** with ratings and reviews
-- **Custom plugin development** with SDK
-- **Revenue sharing** for plugin developers
+### 📱 Mobile App Studio
+- **Cross-platform app generation** (iOS, Android, Web)
+- **React Native** code generation
+- **Native feature integration** (camera, location, notifications)
+- **App store deployment** automation
 
 ### 🎮 Game Studio
 - **Complete 3D/2D game generator** from text prompts
 - **Three.js integration** for 3D games
 - **Canvas API** for 2D games
 - **Physics engines** and collision detection
-- **Asset generation** and management
-
-### 📱 Mobile App Studio
-- **Cross-platform app generation** (iOS, Android, Web)
-- **React Native** code generation
-- **Native feature integration** (camera, location, notifications)
-- **App store deployment** automation
-- **Progressive Web App** support
 
 ## 🏗️ Architecture
 
@@ -80,7 +54,6 @@ NEXUS PRO is a revolutionary AI-powered co-creation platform that combines the b
 - **React 18** with TypeScript
 - **Vite** for fast development
 - **Three.js** for 3D graphics
-- **Fabric.js** for canvas manipulation
 - **Monaco Editor** for code editing
 - **WebSocket** for real-time features
 
@@ -90,22 +63,12 @@ NEXUS PRO is a revolutionary AI-powered co-creation platform that combines the b
 - **PostgreSQL** for relational data
 - **Redis** for caching and sessions
 - **MongoDB** for document storage
-- **Celery** for background tasks
 
 ### AI Integration
 - **OpenAI GPT-4** for code generation
 - **Anthropic Claude** for reasoning
 - **Google Gemini** for documentation
 - **AssemblyAI** for speech recognition
-- **Custom orchestration** layer
-
-### Infrastructure
-- **Docker** containerization
-- **Kubernetes** orchestration
-- **Prometheus** monitoring
-- **Grafana** dashboards
-- **Elasticsearch** for search
-- **MinIO** for object storage
 
 ## 🚀 Quick Start
 
@@ -119,8 +82,8 @@ NEXUS PRO is a revolutionary AI-powered co-creation platform that combines the b
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/nexus-pro/nexus-pro.git
-cd nexus-pro
+git clone https://github.com/Ayanmohd18/Polaris-Tech-guardians.git
+cd Polaris-Tech-guardians
 ```
 
 2. **Install dependencies**
@@ -135,8 +98,8 @@ pip install -r requirements.txt
 
 3. **Environment setup**
 ```bash
-cp .env.example .env
-# Edit .env with your API keys
+cp .env.example .env.local
+# Edit .env.local with your API keys
 ```
 
 4. **Start with Docker Compose**
@@ -148,7 +111,6 @@ docker-compose up -d
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:8000
 - Grafana: http://localhost:3001
-- Kibana: http://localhost:5601
 
 ### Development Mode
 
@@ -174,22 +136,19 @@ ANTHROPIC_API_KEY=your_claude_key
 GOOGLE_API_KEY=your_gemini_key
 ASSEMBLYAI_API_KEY=your_assemblyai_key
 
+# Firebase
+VITE_FIREBASE_API_KEY=your_firebase_key
+VITE_FIREBASE_AUTH_DOMAIN=your_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+
 # Database
 DATABASE_URL=postgresql://user:pass@localhost:5432/nexuspro
 REDIS_URL=redis://localhost:6379
 MONGODB_URL=mongodb://localhost:27017/nexuspro
 
-# External Services
-NOTION_API_KEY=your_notion_key
-FIREBASE_CONFIG=your_firebase_config
-SUPABASE_URL=your_supabase_url
-SUPABASE_KEY=your_supabase_key
-
 # Deployment
 VERCEL_TOKEN=your_vercel_token
 NETLIFY_TOKEN=your_netlify_token
-AWS_ACCESS_KEY_ID=your_aws_key
-AWS_SECRET_ACCESS_KEY=your_aws_secret
 
 # Security
 JWT_SECRET=your_jwt_secret
@@ -217,11 +176,10 @@ POST /api/voice/execute
 POST /api/ai/orchestrate
 {
   "prompt": "Design a scalable microservices architecture",
-  "context": { "project_type": "e-commerce" }
+  "context": {
+    "project_type": "e-commerce"
+  }
 }
-
-// Get AI models status
-GET /api/ai/models/status
 ```
 
 ### Deployment API
@@ -234,9 +192,6 @@ POST /api/deploy/vercel
   "buildCommand": "npm run build",
   "outputDirectory": "dist"
 }
-
-// Get deployment status
-GET /api/deploy/status/{deployment_id}
 ```
 
 ### Database API
@@ -247,8 +202,7 @@ POST /api/database/connect
   "type": "postgresql",
   "host": "localhost",
   "port": 5432,
-  "database": "myapp",
-  "username": "user"
+  "database": "myapp"
 }
 
 // Execute query
@@ -279,12 +233,6 @@ POST /api/database/query
 - Interactive coding exercises
 - Progress tracking and analytics
 
-### 4. Enterprise Development
-- Scalable microservices architecture
-- Multi-database connectivity
-- Advanced security and monitoring
-- Custom plugin development
-
 ## 🔒 Security Features
 
 - **End-to-end encryption** for sensitive data
@@ -293,7 +241,7 @@ POST /api/database/query
 - **API rate limiting** and DDoS protection
 - **Vulnerability scanning** with automated alerts
 - **Secure secret management** with encryption
-- **Audit logging** for compliance
+- **Input sanitization** to prevent XSS and SQL injection
 
 ## 📈 Performance
 
@@ -301,9 +249,8 @@ POST /api/database/query
 - **Real-time WebSocket** with <50ms latency
 - **Horizontal scaling** with Kubernetes
 - **CDN integration** for global performance
-- **Caching layers** with Redis and CDN
+- **Caching layers** with Redis
 - **Database optimization** with connection pooling
-- **Background job processing** with Celery
 
 ## 🧪 Testing
 
@@ -319,9 +266,6 @@ npm run test:frontend
 
 # E2E tests
 npm run test:e2e
-
-# Performance tests
-npm run test:performance
 ```
 
 ## 📦 Deployment Options
@@ -331,24 +275,20 @@ npm run test:performance
 - **Railway** (Full-stack deployment)
 - **AWS ECS/EKS** (Enterprise)
 - **Google Cloud Run** (Serverless)
-- **Azure Container Instances**
 
 ### 2. Self-Hosted
 - **Docker Compose** (Development)
 - **Kubernetes** (Production)
-- **Docker Swarm** (Simple clustering)
 
 ### 3. Hybrid
 - **Frontend on Vercel**
 - **Backend on Railway**
 - **Database on Supabase**
-- **Storage on AWS S3**
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions! Please follow these steps:
 
-### Development Workflow
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
@@ -360,11 +300,10 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 - **ESLint + Prettier** for code formatting
 - **Conventional Commits** for commit messages
 - **Jest** for testing
-- **Storybook** for component documentation
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgments
 
@@ -377,10 +316,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Documentation**: https://docs.nexus-pro.dev
-- **Discord**: https://discord.gg/nexus-pro
+- **GitHub Issues**: https://github.com/Ayanmohd18/Polaris-Tech-guardians/issues
 - **Email**: support@nexus-pro.dev
-- **GitHub Issues**: https://github.com/nexus-pro/nexus-pro/issues
 
 ## 🗺️ Roadmap
 
@@ -410,8 +347,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ by the NEXUS PRO Team**
+**Built with ❤️ by the Polaris Tech Guardians Team**
 
-*Transforming the future of software development, one voice command at a time.*" #   P o l a r i s - T e c h - g u a r d i a n s "    
- #   P o l a r i s - T e c h - g u a r d i a n s    
- 
+*Transforming the future of software development, one voice command at a time.*
